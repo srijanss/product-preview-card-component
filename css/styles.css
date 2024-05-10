@@ -1,0 +1,34 @@
+@import "./_css_reset.css";
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --dark-greyish-blue: hsl(228, 12%, 48%);
+  --very-dark-blue: hsl(212, 21%, 14%);
+  --dark-cyan: hsl(158, 36%, 37%);
+  --cream: hsl(30, 38%, 92%);
+  --primary-font: "Montserrat", sans-serif;
+  --secondary-font: "Fraunces", serif;
+  --font-weight-regular: 500;
+  --font-weight-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  font-family: var(--primary-font);
+  font-size: 14px;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  padding: 1rem 0;
+  & a {
+    color: hsl(228, 45%, 44%);
+  }
+}
