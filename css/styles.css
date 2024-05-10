@@ -1,15 +1,20 @@
 @import "./_css_reset.css";
+@import "./_mixins.css";
 
 :root {
   --white: hsl(0, 0%, 100%);
-  --dark-greyish-blue: hsl(228, 12%, 48%);
+  --text-color: hsl(228, 12%, 48%);
   --very-dark-blue: hsl(212, 21%, 14%);
-  --dark-cyan: hsl(158, 36%, 37%);
-  --cream: hsl(30, 38%, 92%);
+  --primary-color: hsl(158, 36%, 37%);
+  --primary-color-dark: hsl(150, 40%, 20%);
+  --background-color: hsl(30, 38%, 92%);
   --primary-font: "Montserrat", sans-serif;
   --secondary-font: "Fraunces", serif;
-  --font-weight-regular: 500;
+  --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --default-font-size: 16px;
+  --card-width: 600px;
+  --card-height: 450px;
 }
 
 *,
@@ -19,13 +24,137 @@
 }
 
 body {
-  width: 100%;
+  @mixin full-width;
   font-family: var(--primary-font);
-  font-size: 14px;
+  font-size: var(--default-font-size);
+  background-color: var(--background-color);
+}
+main {
+  @mixin full-width;
+  padding: 1.75rem 1rem;
+  @mixin media-query-desktop {
+    padding: 0;
+    padding-top: 10.9375rem;
+  }
+}
+img {
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+}
+.product {
+  @mixin full-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 0.625rem;
+
+  @mixin media-query-desktop {
+    flex-direction: row;
+    align-items: initial;
+    width: var(--card-width);
+    height: var(--card-height);
+    margin: 0 auto;
+  }
+}
+.product__image {
+  @mixin full-width;
+  border-radius: 0.625rem 0.625rem 0 0;
+
+  @mixin media-query-desktop {
+    flex: 1;
+    height: 100%;
+    border-radius: 0.625rem 0 0 0.625rem;
+  }
+}
+.product__info {
+  @mixin full-width;
+  padding: 1.5rem;
+  @mixin media-query-desktop {
+    flex: 1;
+    padding: 2rem;
+  }
+}
+.product__type {
+  font-weight: var(--font-weight-medium);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+  letter-spacing: 0.3125rem;
+}
+.product__title {
+  font-family: var(--secondary-font);
+  font-weight: var(--font-weight-bold);
+  font-size: 2rem;
+  color: var(--very-dark-blue);
+  line-height: 1;
+  padding-top: 0.75rem;
+  @mixin media-query-desktop {
+    padding-top: 1.25rem;
+  }
+}
+.product__description {
+  padding-top: 1rem;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  letter-spacing: 0.03125rem;
+  @mixin media-query-desktop {
+    padding-top: 1.5rem;
+    line-height: 1.75;
+  }
+}
+.product__price {
+  display: flex;
+  gap: 1.1875rem;
+  align-items: center;
+  padding: 1.5rem 0;
+
+  .product__price--current {
+    font-family: var(--secondary-font);
+    font-weight: var(--font-weight-bold);
+    font-size: 2rem;
+    color: var(--primary-color);
+    line-height: 1;
+    text-decoration: none;
+  }
+  .product__price--previous {
+    font-weight: var(--font-weight-medium);
+    font-size: 0.8125rem;
+    color: var(--text-color);
+  }
+
+  @mixin media-query-desktop {
+    padding: 1.875rem 0;
+  }
+}
+
+.product__add-to-cart-button {
+  @mixin full-width;
+  height: 3rem;
+  padding: 1rem 0;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-dark);
+  }
 }
 
 .attribution {
-  font-size: 11px;
+  font-size: 0.6875rem;
   text-align: center;
   padding: 1rem 0;
   & a {
