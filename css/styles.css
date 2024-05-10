@@ -56,6 +56,9 @@ img {
     width: var(--card-width);
     height: var(--card-height);
     margin: 0 auto;
+    picture {
+      @mixin half-width;
+    }
   }
 }
 .product__image {
@@ -72,6 +75,7 @@ img {
   @mixin full-width;
   padding: 1.5rem;
   @mixin media-query-desktop {
+    @mixin half-width;
     flex: 1;
     padding: 2rem;
   }

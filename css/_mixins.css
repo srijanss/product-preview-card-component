@@ -7,3 +7,6 @@
 @define-mixin full-width {
   width: 100%;
 }
+@define-mixin half-width {
+  width: 50%;
+}
